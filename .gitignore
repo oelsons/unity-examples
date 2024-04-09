@@ -46,7 +46,7 @@ ExportedObj
 *.mdb.meta
 sysinfo.txt
 *.apk
-*.unitypackage
+#*.unitypackage
 .collabignore
 ~UnityDirMonSyncFile~*
 crashlytics-build.properties
