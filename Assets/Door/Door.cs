@@ -45,7 +45,7 @@ public class Door : MonoBehaviour
     private void OnDestroy()
     {
         foreach (Button button in buttonList) {
-            button.OnTrigger += Button_OnTrigger;
+            button.OnTrigger -= Button_OnTrigger;
         }
     }
 }
