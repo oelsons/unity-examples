@@ -1,4 +1,5 @@
 # Unity Examples
+This will be a collection of simple, self-contained scenes with mechanic examples
 
 ## Door
 Even a simple door can be tricky if you're just starting gamedev!
