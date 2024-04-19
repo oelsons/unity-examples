@@ -57,3 +57,7 @@ crashlytics-build.properties
 .DS_Store*
 Thumbs.db
 Desktop.ini
+/Assets/TextMesh Pro
+*.meta
+*.unitypackage
+Packages/packages-lock.json
