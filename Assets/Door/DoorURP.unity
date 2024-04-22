@@ -271,7 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9f21996fc2ab2449360f225f641c07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  walkSpeed: 5
+  runSpeed: 10
 --- !u!1 &377892839
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,6 +431,8 @@ MonoBehaviour:
   - {fileID: 1915653378}
   - {fileID: 1284743052}
   doorSpeed: 5
+  openRotation: {x: 0, y: 0, z: 0}
+  closeRotation: {x: 0, y: -90, z: 0}
 --- !u!114 &498822223
 MonoBehaviour:
   m_ObjectHideFlags: 0

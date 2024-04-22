@@ -5,7 +5,10 @@ public class Door : MonoBehaviour
 {
     [SerializeField] private List<Button> buttonList;
     [SerializeField] float doorSpeed = 5f;
+    [SerializeField] Vector3 openRotation;
+    [SerializeField] Vector3 closeRotation;
 
+    private bool isMoving = false;
     private bool isOpen = false;
     private float timeCount = 0f;
     private Quaternion fromRotation = Quaternion.identity;
@@ -20,14 +23,19 @@ public class Door : MonoBehaviour
 
     private void Update()
     {
+        if (!isMoving) return;
+
         transform.rotation = Quaternion.Lerp(fromRotation, toRotation, timeCount * doorSpeed);
         timeCount += Time.deltaTime;
+
+        if (transform.rotation == toRotation) isMoving = false;
     }
 
     private void Button_OnTrigger(object sender, System.EventArgs e)
     {
         fromRotation = transform.rotation;
         timeCount = 0f;
+        isMoving = true;
 
         if (isOpen) {
             Close();
@@ -39,13 +47,13 @@ public class Door : MonoBehaviour
     private void Open()
     {
         isOpen = true;
-        toRotation = Quaternion.Euler(0, -90, 0);
+        toRotation = Quaternion.Euler(openRotation);
     }
 
     private void Close()
     {
         isOpen = false;
-        toRotation = Quaternion.Euler(0, 0, 0);
+        toRotation = Quaternion.Euler(closeRotation);
     }
 
     private void OnDestroy()
