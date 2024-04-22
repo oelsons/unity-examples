@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HingeDoor : MonoBehaviour
+public class ForceMeter : MonoBehaviour
 {
     [SerializeField] Slider forceSlider;
 
