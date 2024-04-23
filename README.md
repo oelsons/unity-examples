@@ -18,3 +18,13 @@ For this simple door, you'll encounter:
 - Player Controller
 
 Also I've made sure to only use in-Unity stuff, no external assets.
+
+## DoorHinge
+This is an example of a Door using Unity's _Hinge_ component to move with physics.
+And you can break it too!
+Press **Shift** to run at the door.
+
+Notes:
+- A hinge doesn't need to be anchored to another object.
+- You'd only attach another object if they're going to move together.
+- The door also uses the _Limit_ setup.
