@@ -58,6 +58,5 @@ crashlytics-build.properties
 Thumbs.db
 Desktop.ini
 /Assets/TextMesh Pro
-*.meta
 *.unitypackage
 Packages/packages-lock.json
