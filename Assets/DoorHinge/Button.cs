@@ -9,8 +9,7 @@ public class Button : MonoBehaviour
 
     private void Awake()
     {
-        activatable = activatableGameObject.GetComponent<IActivatable>();
-        if (activatable == null) {
+        if (!activatableGameObject.TryGetComponent(out activatable)) {
             Debug.LogError("Attached GameObject is not IActivatable");
         }
     }
@@ -18,8 +17,13 @@ public class Button : MonoBehaviour
     private void Update()
     {
         if (inTrigger && Input.GetKeyDown(KeyCode.E)) {
-            if (activatable == null) return;
-            activatable.Activate();
+            if (activatable.Equals(null)) return;
+
+            if (activatable.IsActivated()) {
+                activatable.Deactivate();
+            } else {
+                activatable.Activate();
+            }
         }
     }
 

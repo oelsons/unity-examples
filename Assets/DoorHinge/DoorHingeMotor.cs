@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class DoorHingeMotor : MonoBehaviour, IActivatable
 {
-    [SerializeField] private bool isClosed;
+    [SerializeField] private bool toggle;
     [SerializeField] private float doorSpeed;
     [SerializeField] private float doorForce;
 
@@ -17,23 +17,30 @@ public class DoorHingeMotor : MonoBehaviour, IActivatable
         joint = GetComponent<HingeJoint>();
     }
 
-    private void Open()
+    public void Activate()
     {
+        toggle = true;
+
         motor.targetVelocity = -doorSpeed;
         motor.force = doorForce;
         joint.motor = motor;
+
+        joint.useMotor = true;
     }
 
-    private void Close()
+    public void Deactivate()
     {
+        toggle = false;
+
         motor.targetVelocity = doorSpeed;
         motor.force = doorForce;
         joint.motor = motor;
+
+        joint.useMotor = true;
     }
 
     private void Update()
     {
-        if (joint == null) Destroy(this);
         if (!joint.useMotor) return;
 
         int angle = Mathf.RoundToInt(joint.angle);
@@ -45,16 +52,13 @@ public class DoorHingeMotor : MonoBehaviour, IActivatable
         debug = "joint.limits.max: " + limitMax + "\njoint.limits.min: " + limitMin + "\nintAngle: " + angle;
     }
 
-    public void Activate()
+    private void OnJointBreak(float breakForce)
     {
-        isClosed = !isClosed;
+        Destroy(this);
+    }
 
-        if (isClosed) {
-            Close();
-        } else {
-            Open();
-        }
-
-        joint.useMotor = true;
+    public bool IsActivated()
+    {
+        return toggle;
     }
 }

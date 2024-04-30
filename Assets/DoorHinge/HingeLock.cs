@@ -11,9 +11,9 @@ public class HingeLock : MonoBehaviour, IActivatable
         public JointSpring lockSpring = new JointSpring();
     }
 
-    [SerializeField] HingeJoint joint;
-    [SerializeField] bool isLocked = false;
-    [SerializeField] float lockSpring;
+    [SerializeField] private HingeJoint joint;
+    [SerializeReference] private bool isLocked;
+    [SerializeField] private float lockSpring;
 
     HingeConfig hc = new HingeConfig();
 
@@ -28,35 +28,23 @@ public class HingeLock : MonoBehaviour, IActivatable
         hc.lockSpring.spring = lockSpring;
 
         if (isLocked) {
-            Lock();
+            Activate();
         } else {
-            Unlock();
+            Deactivate();
         }
+    }
+
+    private void Update()
+    {
+        if (joint == null) Destroy(this);
     }
 
     public void Activate()
     {
-        isLocked = !isLocked;
+        isLocked = true;
 
-        if (isLocked) {
-            Lock();
-        } else {
-            Unlock();
-        }
-    }
-
-    private void Unlock()
-    {
-        print(hc.limits.min);
-        joint.limits = hc.limits;
-        joint.useSpring = hc.useSpring;
-        joint.spring = hc.spring;
-    }
-
-    private void Lock()
-    {
         joint.useSpring = true;
-        
+
         lockLimits.min = joint.angle - 1;
         lockLimits.max = joint.angle + 1;
         joint.limits = lockLimits;
@@ -64,8 +52,17 @@ public class HingeLock : MonoBehaviour, IActivatable
         joint.spring = hc.lockSpring;
     }
 
-    private void OnJointBreak(float breakForce)
+    public void Deactivate()
     {
-        Destroy(this);
+        isLocked = false;
+
+        joint.limits = hc.limits;
+        joint.useSpring = hc.useSpring;
+        joint.spring = hc.spring;
+    }
+
+    public bool IsActivated()
+    {
+        return isLocked;
     }
 }

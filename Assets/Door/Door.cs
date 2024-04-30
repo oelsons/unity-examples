@@ -22,18 +22,6 @@ public class Door : MonoBehaviour, IActivatable
         if (transform.rotation == toRotation) isMoving = false;
     }
 
-    private void Open()
-    {
-        isOpen = true;
-        toRotation = Quaternion.Euler(openRotation);
-    }
-
-    private void Close()
-    {
-        isOpen = false;
-        toRotation = Quaternion.Euler(closeRotation);
-    }
-
     private void OnJointBreak(float breakForce)
     {
         Destroy(this);
@@ -44,11 +32,21 @@ public class Door : MonoBehaviour, IActivatable
         fromRotation = transform.rotation;
         timeCount = 0f;
         isMoving = true;
+        isOpen = true;
+        toRotation = Quaternion.Euler(openRotation);
+    }
 
-        if (isOpen) {
-            Close();
-        } else {
-            Open();
-        }
+    public void Deactivate()
+    {
+        fromRotation = transform.rotation;
+        timeCount = 0f;
+        isMoving = true;
+        isOpen = false;
+        toRotation = Quaternion.Euler(closeRotation);
+    }
+
+    public bool IsActivated()
+    {
+        return isOpen;
     }
 }
