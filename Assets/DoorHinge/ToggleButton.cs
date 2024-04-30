@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Button : MonoBehaviour
+public class ToggleButton : MonoBehaviour
 {
     [SerializeField] GameObject activatableGameObject;
 

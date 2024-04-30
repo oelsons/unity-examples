@@ -41,11 +41,16 @@ public class DoorHingeMotor : MonoBehaviour, IActivatable
 
     private void Update()
     {
-        if (!joint.useMotor) return;
-
         int angle = Mathf.RoundToInt(joint.angle);
         int limitMin = Mathf.RoundToInt(joint.limits.min);
         int limitMax = Mathf.RoundToInt(joint.limits.max);
+
+        if (!joint.useMotor && (angle == limitMax || angle == limitMin)) {
+            toggle = angle == limitMin;
+            return;
+        }
+
+        if (!joint.useMotor) return;
 
         joint.useMotor = !((motor.targetVelocity > 0 && angle == limitMax) || (motor.targetVelocity < 0 && angle == limitMin));
 
