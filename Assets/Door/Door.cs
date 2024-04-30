@@ -1,9 +1,7 @@
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Door : MonoBehaviour
+public class Door : MonoBehaviour, IActivatable
 {
-    [SerializeField] private List<Button> buttonList;
     [SerializeField] float doorSpeed = 5f;
     [SerializeField] Vector3 openRotation;
     [SerializeField] Vector3 closeRotation;
@@ -14,13 +12,6 @@ public class Door : MonoBehaviour
     private Quaternion fromRotation = Quaternion.identity;
     private Quaternion toRotation = Quaternion.identity;
 
-    private void Start()
-    {
-        foreach (Button button in buttonList) {
-            button.OnTrigger += Button_OnTrigger;
-        }
-    }
-
     private void Update()
     {
         if (!isMoving) return;
@@ -29,19 +20,6 @@ public class Door : MonoBehaviour
         timeCount += Time.deltaTime;
 
         if (transform.rotation == toRotation) isMoving = false;
-    }
-
-    private void Button_OnTrigger(object sender, System.EventArgs e)
-    {
-        fromRotation = transform.rotation;
-        timeCount = 0f;
-        isMoving = true;
-
-        if (isOpen) {
-            Close();
-        } else {
-            Open();
-        }
     }
 
     private void Open()
@@ -56,10 +34,21 @@ public class Door : MonoBehaviour
         toRotation = Quaternion.Euler(closeRotation);
     }
 
-    private void OnDestroy()
+    private void OnJointBreak(float breakForce)
     {
-        foreach (Button button in buttonList) {
-            button.OnTrigger -= Button_OnTrigger;
+        Destroy(this);
+    }
+
+    public void Activate()
+    {
+        fromRotation = transform.rotation;
+        timeCount = 0f;
+        isMoving = true;
+
+        if (isOpen) {
+            Close();
+        } else {
+            Open();
         }
     }
 }

@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class Button : MonoBehaviour
+public class EventButton : MonoBehaviour
 {
     public event EventHandler OnTrigger;
 
