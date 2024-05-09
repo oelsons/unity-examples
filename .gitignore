@@ -61,3 +61,5 @@ Desktop.ini
 *.unitypackage
 Packages/packages-lock.json
 /.plastic
+/Assets/UnityExamplesTest
+Assets/UnityExamplesTest.meta

@@ -389,8 +389,8 @@ GameObject:
   m_Component:
   - component: {fileID: 498822221}
   - component: {fileID: 498822222}
-  - component: {fileID: 498822223}
   - component: {fileID: 498822224}
+  - component: {fileID: 498822225}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -426,25 +426,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38579860fd325aa44b6b6504050981e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttonList:
-  - {fileID: 498822223}
-  - {fileID: 1915653378}
-  - {fileID: 1284743052}
   doorSpeed: 5
   openRotation: {x: 0, y: -90, z: 0}
   closeRotation: {x: 0, y: 0, z: 0}
---- !u!114 &498822223
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498822220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb50ebc50804104e873ea12d46d3365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &498822224
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -466,6 +450,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 3, z: 1}
   m_Center: {x: 0.75, y: 1.5, z: 0}
+--- !u!114 &498822225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498822220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1868e469db364b044b2ac55228dc374c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activatableGameObject: {fileID: 498822220}
 --- !u!1 &890984004
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,7 +686,7 @@ GameObject:
   - component: {fileID: 1284743055}
   - component: {fileID: 1284743054}
   - component: {fileID: 1284743053}
-  - component: {fileID: 1284743052}
+  - component: {fileID: 1284743056}
   m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
@@ -712,18 +709,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 377892843}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284743052
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284743050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb50ebc50804104e873ea12d46d3365, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1284743053
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -795,6 +780,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1284743050}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1284743056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284743050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1868e469db364b044b2ac55228dc374c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activatableGameObject: {fileID: 498822220}
 --- !u!1 &1344213148
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,9 +1446,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1915653373}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fb50ebc50804104e873ea12d46d3365, type: 3}
+  m_Script: {fileID: 11500000, guid: 1868e469db364b044b2ac55228dc374c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  activatableGameObject: {fileID: 498822220}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
