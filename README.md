@@ -12,7 +12,7 @@ For this simple door, you'll encounter:
 - Quaternions
 - Lerp
 - Lists
-- Events
+- Interfaces
 - Interaction
 - Rigidbody
 - Player Controller
