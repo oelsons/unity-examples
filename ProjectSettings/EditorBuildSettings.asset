@@ -6,12 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/DoorHinge/DoorHinge.unity
+    path: Assets/Doors/DoorHinge/DoorHinge.unity
     guid: 1a919d28a7666f74983cedeaa5de5ed3
   - enabled: 1
     path: Assets/_Shared/UI/UI.unity
     guid: 0af0f6f9db9b9bf4dbc8a2c4788def68
   - enabled: 1
-    path: Assets/Door/Door.unity
+    path: Assets/Doors/Door/Door.unity
     guid: 79ec16fc86902304eb41b21615631c39
   m_configObjects: {}
